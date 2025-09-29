@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+:root {
+  --background: #e9e6e6;
+  --foreground: #1f1f1f;
+  --primary: #1c4e50;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1f1f1f;
+    --foreground: #e9e6e6;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+h1 {
+  @apply text-4xl sm:text-5xl mb-4 px-2;
+}
+h2 {
+  @apply text-2xl sm:text-3xl mb-2 px-2;
+}
+
+h3 {
+  @apply text-xl sm:text-2xl mb-2 px-2;
+}
+
+p {
+  @apply px-2;
+}
+
+figcaption {
+  @apply text-sm text-gray-600 dark:text-gray-400 mt-2 px-2 lg:px-0;
+}
+
+.button {
+  @apply px-4 py-2 bg-green-900 rounded-xl hover:bg-green-800 text-background dark:text-foreground;
+}
