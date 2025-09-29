@@ -66,3 +66,14 @@ export type Concert = {
   ticketsLink?: string;
   description?: string;
 };
+
+export type Musician = {
+  name: string;
+  info: string[];
+  socialLinks: { platform: string; url: string }[];
+  instrument: string;
+  quote: string;
+  section: "sax" | "trompet" | "trombone" | "komp" | "musikalisk_leder";
+  photo: { asset: { _id: string; url: string } };
+  slug: { current: string };
+};

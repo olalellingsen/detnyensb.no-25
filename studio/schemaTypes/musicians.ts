@@ -12,12 +12,33 @@ export const musicians = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'instrument',
+      title: 'Instrument',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
         source: 'name',
         maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'section',
+      title: 'Seksjon',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Sax', value: 'sax'},
+          {title: 'Trompet', value: 'trompet'},
+          {title: 'Trombone', value: 'trombone'},
+          {title: 'Komp', value: 'komp'},
+          {title: 'Musikalsk leder', value: 'musikalisk_leder'},
+        ],
       },
       validation: (Rule) => Rule.required(),
     }),
@@ -42,16 +63,9 @@ export const musicians = defineType({
       ],
     }),
     defineField({
-      name: 'instrument',
-      title: 'Instrument',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'quote',
       title: 'Sitat',
       type: 'text',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'photo',
@@ -60,6 +74,16 @@ export const musicians = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'text',
+          type: 'string',
+          title: 'Bildetekst',
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
       validation: (Rule) => Rule.required(),
     }),
   ],
