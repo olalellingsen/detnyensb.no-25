@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 function Navbar() {
   const [menuItems] = useState([
@@ -33,6 +34,17 @@ function Navbar() {
   return (
     <>
       <nav className="h-16 sm:h-20 p-2 sm:px-4 flex justify-end w-full">
+        <div className="absolute left-2 top-2 sm:top-4 sm:left-4">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              className="size-14 sm:size-16 cursor-pointer hover:scale-105 transition-transform duration-300"
+              width={64}
+              height={64}
+            />
+          </Link>
+        </div>
         <ul
           className={`hidden md:flex w-max gap-8 m-4 text-lg hover:text-stone-500 dark:hover:text-stone-400
           } `}

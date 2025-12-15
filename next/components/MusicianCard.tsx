@@ -2,18 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Musician } from "./../types";
+import { urlForImage } from "@/sanity/client";
 
 export default function MusicianCard({ musician }: { musician: Musician }) {
   return (
-    <Link href={`/musikere/${musician.slug.current}`}>
+    <Link href={`/musikere/${musician.slug.current}`} className="group">
       <Image
-        src={musician.photo.asset.url}
+        src={urlForImage(musician.photo).url()}
         alt={musician.name}
         width={400}
         height={200}
-        className="w-full h-auto object-cover"
+        className="w-full h-auto object-cover group-hover:scale-101 transition-transform duration-200"
       />
-      <p>{musician.name}</p>
+      <p className="group-hover:underline text-xl">{musician.name}</p>
       <p>{musician.instrument}</p>
     </Link>
   );

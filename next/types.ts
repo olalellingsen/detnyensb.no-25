@@ -60,6 +60,7 @@ export type AboutPage = {
 };
 
 export type Concert = {
+  title: string;
   date?: string;
   time?: string;
   location?: string;
@@ -70,10 +71,19 @@ export type Concert = {
 export type Musician = {
   name: string;
   info: string[];
+  order: number;
   socialLinks: { platform: string; url: string }[];
   instrument: string;
   quote: string;
   section: "sax" | "trompet" | "trombone" | "komp" | "musikalisk_leder";
-  photo: { asset: { _id: string; url: string } };
+  photo: SanityImage;
   slug: { current: string };
+};
+
+export type Release = {
+  id: string;
+  title: string;
+  releaseDate: string;
+  coverArt: SanityImage;
+  spotifyLink: string;
 };

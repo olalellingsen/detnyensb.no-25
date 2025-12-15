@@ -37,10 +37,9 @@ const HOME_QUERY = defineQuery(`
     }
   }
 `);
-const options = { next: { revalidate: 600 } };
 
 export default async function Home() {
-  const home = await client.fetch<HomePage>(HOME_QUERY, {}, options);
+  const home = await client.fetch<HomePage>(HOME_QUERY, {});
 
   console.log(home);
 
@@ -59,7 +58,7 @@ export default async function Home() {
             alt={home.homeImage.alt || "Home Image"}
             width={800}
             height={600}
-            className="w-full aspect-square sm:aspect-video object-cover"
+            className="w-full aspect-3/4 sm:aspect-video object-cover"
           />
           {home.homeImage.caption && (
             <figcaption>{home.homeImage.caption}</figcaption>

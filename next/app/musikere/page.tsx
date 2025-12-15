@@ -13,6 +13,7 @@ const MUSICIANS_QUERY = defineQuery(`*[_type == "musicians"]{
   instrument,
   quote,
   section,
+  order,
   slug,
   photo{asset->{_id,url}}
 }`);
@@ -32,9 +33,9 @@ export default async function page() {
     <>
       <h1>Musikere</h1>
       {sections.map(({ key, title }) => {
-        const sectionMusicians = musicians.filter(
-          (musician) => musician.section === key
-        );
+        const sectionMusicians = musicians
+          .filter((musician) => musician.section === key)
+          .sort((a, b) => a.order - b.order);
 
         if (sectionMusicians.length === 0) return null;
 

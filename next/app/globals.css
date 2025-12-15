@@ -38,18 +38,18 @@ body {
 }
 
 h1 {
-  @apply text-4xl sm:text-5xl mb-4 px-2;
+  @apply text-4xl sm:text-5xl mb-4 px-2 sm:px-0;
 }
 h2 {
-  @apply text-2xl sm:text-3xl mb-2 px-2;
+  @apply text-2xl sm:text-3xl mb-2 px-2 sm:px-0;
 }
 
 h3 {
-  @apply text-xl sm:text-2xl mb-2 px-2;
+  @apply text-xl sm:text-2xl mb-2 px-2 sm:px-0;
 }
 
 p {
-  @apply px-2;
+  @apply px-2 sm:px-0;
 }
 
 figcaption {

@@ -3,10 +3,10 @@ import { client } from "@/sanity/client";
 import { Concert } from "@/types";
 import ConcertList from "@/components/ConcertList";
 import { defineQuery } from "next-sanity";
-import Image from "next/image";
 
 const UPCOMING_CONCERTS_QUERY =
   defineQuery(`*[_type == "concerts" && date >= now()] | order(date asc) {
+  title,
   date,
   time,
   location,
@@ -16,6 +16,7 @@ const UPCOMING_CONCERTS_QUERY =
 
 const PAST_CONCERTS_QUERY =
   defineQuery(`*[_type == "concerts" && date < now()] | order(date desc) {
+  title,
   date,
   location,
   description

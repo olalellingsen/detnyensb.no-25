@@ -21,7 +21,7 @@ export default function ConcertList({
     <>
       {upcoming_concerts.length > 0 && (
         <section className="mt-10">
-          <h2>Upcoming concerts</h2>
+          <h2>Kommende konserter</h2>
           <ul className="space-y-2">
             {upcoming_concerts.map((concert, index) => (
               <li
@@ -29,7 +29,8 @@ export default function ConcertList({
                 className="flex justify-between max-w-md py-1 border-b border-gray-300"
               >
                 <div>
-                  <h3>{concert.location}</h3>
+                  <h3>{concert.title}</h3>
+                  <p>{concert.location}</p>
                   <p>
                     {formatDate(concert.date || "")} - {concert.time}
                   </p>
@@ -53,7 +54,7 @@ export default function ConcertList({
       )}
       {past_concerts.length > 0 && (
         <section className="mt-10">
-          <h2>Past concerts</h2>
+          <h2>Tidligere konserter</h2>
 
           <ul className="space-y-2">
             {past_concerts.map((concert, index) => (
@@ -61,7 +62,8 @@ export default function ConcertList({
                 key={index}
                 className="max-w-md py-1 border-b border-gray-300"
               >
-                <h3>{concert.location}</h3>
+                <h3>{concert.title}</h3>
+                <p>{concert.location}</p>
                 <p>{formatDate(concert.date || "")}</p>
               </li>
             ))}

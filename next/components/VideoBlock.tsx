@@ -24,7 +24,7 @@ export default function VideoBlock({
         const embedUrl = getEmbedUrl(video.url);
         return (
           <li key={video.url}>
-            {video.caption && <h2>{video.caption}</h2>}
+            {video.caption && <h3>{video.caption}</h3>}
             {embedUrl && (
               <iframe
                 src={embedUrl}

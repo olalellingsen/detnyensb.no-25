@@ -32,7 +32,7 @@ export default async function Footer() {
       )}
       <br />
 
-      <p className="text-center text-gray-500">
+      <p className="text-center text-gray-200">
         © {new Date().getFullYear()} Det Nye Norske Storband
       </p>
     </footer>
