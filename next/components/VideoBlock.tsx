@@ -19,7 +19,7 @@ export default function VideoBlock({
   }>;
 }) {
   return (
-    <ul className="grid gap-4 md:grid-cols-2">
+    <ul className="grid gap-8 md:gap-4 md:grid-cols-2">
       {videos.map((video) => {
         const embedUrl = getEmbedUrl(video.url);
         return (

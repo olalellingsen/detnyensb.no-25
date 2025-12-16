@@ -12,8 +12,8 @@
 }
 
 :root {
-  --background: #e9e6e6;
-  --foreground: #1f1f1f;
+  --background: #e4e6e6;
+  --foreground: #123132;
   --primary: #1c4e50;
 }
 
@@ -27,8 +27,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1f1f1f;
-    --foreground: #e9e6e6;
+    --background: #123132;
+    --foreground: #e4e6e6;
   }
 }
 
@@ -38,18 +38,18 @@ body {
 }
 
 h1 {
-  @apply text-4xl sm:text-5xl mb-4 px-2 sm:px-0;
+  @apply text-4xl sm:text-5xl mb-4 px-2 lg:px-0;
 }
 h2 {
-  @apply text-2xl sm:text-3xl mb-2 px-2 sm:px-0;
+  @apply text-2xl sm:text-3xl mb-2 px-2 lg:px-0;
 }
 
 h3 {
-  @apply text-xl sm:text-2xl mb-2 px-2 sm:px-0;
+  @apply text-xl sm:text-2xl mb-2 px-2 lg:px-0;
 }
 
 p {
-  @apply px-2 sm:px-0;
+  @apply px-2 lg:px-0;
 }
 
 figcaption {
@@ -57,5 +57,5 @@ figcaption {
 }
 
 .button {
-  @apply px-4 py-2 bg-green-900 rounded-xl hover:bg-green-800 text-background dark:text-foreground;
+  @apply px-4 py-2 border rounded-2xl my-2 hover:bg-background hover:text-foreground transition-colors;
 }

@@ -62,6 +62,18 @@ export const concerts = defineType({
       title: 'Beskrivelse',
     }),
   ],
+  orderings: [
+    {
+      title: 'Date Descending',
+      name: 'dateDesc',
+      by: [{field: 'date', direction: 'desc'}],
+    },
+    {
+      title: 'Date Ascending',
+      name: 'dateAsc',
+      by: [{field: 'date', direction: 'asc'}],
+    },
+  ],
   preview: {
     select: {
       title: 'title',

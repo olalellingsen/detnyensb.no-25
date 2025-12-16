@@ -1,6 +1,16 @@
+import { urlForImage } from "@/sanity/client";
 import { Concert } from "@/types";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}.${month}.${year}`;
+}
 
 export default function ConcertList({
   upcoming_concerts,
@@ -9,14 +19,6 @@ export default function ConcertList({
   upcoming_concerts: Concert[];
   past_concerts: Concert[];
 }) {
-  function formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}.${month}.${year}`;
-  }
-
   return (
     <>
       {upcoming_concerts.length > 0 && (
@@ -28,6 +30,16 @@ export default function ConcertList({
                 key={index}
                 className="flex justify-between max-w-md py-1 border-b border-gray-300"
               >
+                {concert.image && (
+                  <Image
+                    src={urlForImage(concert.image).url()}
+                    alt={concert.image.alt || "Concert Image"}
+                    width={300}
+                    height={200}
+                    className="aspect-square object-cover w-full"
+                  />
+                )}
+
                 <div>
                   <h3>{concert.title}</h3>
                   <p>{concert.location}</p>

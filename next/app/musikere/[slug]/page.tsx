@@ -32,7 +32,7 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <>
       <div className="mb-4">
-        <Link href="/musikere" className="hover:underline text-primary">
+        <Link href="/musikere" className="hover:underline text-primary p-2">
           Tilbake til oversikten
         </Link>
       </div>

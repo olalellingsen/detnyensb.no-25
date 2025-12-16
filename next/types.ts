@@ -21,6 +21,13 @@ export type GalleryBlock = {
   images: SanityImage[];
 };
 
+// Concerts block type
+export type ConcertsBlock = {
+  _type: "concertsBlock";
+  title?: string;
+  concertList: Concert[];
+};
+
 // Spotify player block type
 export type SpotifyBlock = {
   _type: "spotifyPlayer";
@@ -43,7 +50,8 @@ export type PageBuilderBlock =
   | RichTextBlock
   | GalleryBlock
   | SpotifyBlock
-  | VideoBlock;
+  | VideoBlock
+  | ConcertsBlock;
 
 // Main HomePage type
 export type HomePage = {
@@ -55,17 +63,19 @@ export type HomePage = {
 // About page type
 export type AboutPage = {
   title?: string;
-  image?: SanityImageSource;
+  image?: SanityImage;
   content?: PortableTextBlock[];
 };
 
 export type Concert = {
+  _id: string;
   title: string;
   date?: string;
   time?: string;
   location?: string;
   ticketsLink?: string;
   description?: string;
+  image?: SanityImage;
 };
 
 export type Musician = {
@@ -86,4 +96,15 @@ export type Release = {
   releaseDate: string;
   coverArt: SanityImage;
   spotifyLink: string;
+};
+
+export type Footer = {
+  links: {
+    title: string;
+    url: string;
+  }[];
+  contactInfo: {
+    title: string;
+    url: string;
+  }[];
 };

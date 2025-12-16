@@ -1,3 +1,4 @@
+import ConcertsBlock from "@/components/ConcertsBlock";
 import Gallery from "@/components/Gallery";
 import PortableTextComponent from "@/components/PortableTextSection";
 import SpotifyPlayer from "@/components/SpotifyPlayer";
@@ -25,6 +26,19 @@ const HOME_QUERY = defineQuery(`
         url,
         size
       },
+      _type == "concertsBlock" => {
+        _type,
+        title,
+        concertList[]-> {
+          _id,
+          title,
+          date,
+          location,
+          ticketsLink,
+          description,
+          image
+        }
+      },
       _type == "videos" => {
         _type,
         title,
@@ -41,15 +55,13 @@ const HOME_QUERY = defineQuery(`
 export default async function Home() {
   const home = await client.fetch<HomePage>(HOME_QUERY, {});
 
-  console.log(home);
-
   if (!home) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-      <h1>{home.title || "Welcome"}</h1>
+      <h1 className="text-center">Det Nye Norske Storband</h1>
 
       {home.homeImage && (
         <section>
@@ -78,7 +90,7 @@ export default async function Home() {
             );
           case "spotifyPlayer":
             return (
-              <section key={index} className="my-10">
+              <section key={index} className="my-10 px-2 sm:px-0">
                 <SpotifyPlayer url={block.url} size={block.size} />
               </section>
             );
@@ -88,7 +100,15 @@ export default async function Home() {
                 <VideoBlock videos={block.videos} />
               </section>
             );
-
+          case "concertsBlock":
+            return (
+              <section key={index} className="my-10">
+                <ConcertsBlock
+                  concertList={block.concertList}
+                  title={block.title}
+                />
+              </section>
+            );
           default:
             return null;
         }

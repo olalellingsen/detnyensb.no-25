@@ -156,7 +156,7 @@ export const home = defineType({
         {
           type: 'object',
           name: 'videos',
-          title: 'Videos',
+          title: 'Videoer',
           fields: [
             {
               name: 'title',
@@ -200,20 +200,58 @@ export const home = defineType({
           ],
         },
 
+        // Concerts Block
+        {
+          type: 'object',
+          name: 'concertsBlock',
+          title: 'Utvalgte konserter',
+          fields: [
+            {title: 'Tittel', name: 'title', type: 'string'},
+            {
+              name: 'concertList',
+              title: 'Velg konserter',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [{type: 'concerts'}],
+                  options: {
+                    filter: 'date >= $today',
+                    filterParams: {today: new Date().toISOString().split('T')[0]},
+                  },
+                },
+              ],
+              validation: (Rule) => Rule.min(1).max(5),
+            },
+          ],
+          preview: {
+            select: {
+              concertList: 'concertList',
+            },
+            prepare({concertList}) {
+              const count = concertList ? concertList.length : 0
+              return {
+                title: 'Utvalgte konserter',
+                subtitle: `${count} konsert${count !== 1 ? 'er' : ''} valgt`,
+              }
+            },
+          },
+        },
+
         // Gallery Block
         {
           type: 'object',
           name: 'gallery',
-          title: 'Image Gallery',
+          title: 'Bildegalleri',
           fields: [
             {
               name: 'title',
-              title: 'Gallery Title',
+              title: 'Galleri Tittel',
               type: 'string',
             },
             {
               name: 'images',
-              title: 'Images',
+              title: 'Bilder',
               type: 'array',
               of: [
                 {
