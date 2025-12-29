@@ -101,11 +101,17 @@ export type Release = {
 };
 
 export type Footer = {
+  buttons: {
+    title: string;
+    url: string;
+  }[];
+  phoneNumber?: string;
+  email?: string;
   links: {
     title: string;
     url: string;
   }[];
-  contactInfo: {
+  somePlatforms: {
     title: string;
     url: string;
   }[];

@@ -6,8 +6,37 @@ export const footer = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'contactInfo',
-      title: 'Kontaktinformasjon',
+      name: 'buttons',
+      title: 'Knapper',
+      type: 'array',
+      of: [
+        {
+          name: 'buttonLink',
+          title: 'Knappe lenke',
+          type: 'object',
+          fields: [
+            {name: 'title', title: 'Tittel', type: 'string'},
+            {name: 'url', title: 'URL', type: 'url'},
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'phoneNumber',
+      title: 'Telefonnummer',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'email',
+      title: 'E-post',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'somePlatforms',
+      title: 'SoMe plattformer',
       type: 'array',
       of: [
         {
