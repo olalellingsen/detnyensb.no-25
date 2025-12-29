@@ -1,13 +1,6 @@
 import { client, urlForImage } from "@/sanity/client";
 import { Musician } from "@/types";
-import { url } from "inspector";
-import {
-  ArrowLeft,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-} from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { defineQuery } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,9 +18,14 @@ const MUSICIAN_QUERY =
   photo{asset->{_id,url}}
 }`);
 
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const musician = await client.fetch<Musician>(MUSICIAN_QUERY, {
-    slug: params.slug,
+    slug,
   });
   return (
     <>

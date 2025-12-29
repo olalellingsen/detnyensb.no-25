@@ -1,7 +1,5 @@
 import { client } from "@/sanity/client";
 import { defineQuery } from "next-sanity";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { Musician } from "../../types";
 import MusicianCard from "@/components/MusicianCard";

@@ -21,9 +21,14 @@ const CONCERT_QUERY =
   image
 }`);
 
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const concert = await client.fetch<Concert | null>(CONCERT_QUERY, {
-    slug: params.slug,
+    slug,
   });
 
   if (!concert) notFound();
