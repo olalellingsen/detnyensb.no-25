@@ -40,7 +40,7 @@ export default async function page() {
         if (sectionMusicians.length === 0) return null;
 
         return (
-          <section key={key} className="mb-8">
+          <section key={key} className="mb-8 sm:mb-16">
             <h2>{title}</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {sectionMusicians.map((musician) => (

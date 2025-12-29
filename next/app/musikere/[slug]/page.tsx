@@ -32,7 +32,10 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <>
       <div className="mb-4">
-        <Link href="/musikere" className="hover:underline text-primary">
+        <Link
+          href="/musikere"
+          className="hover:underline text-primary dark:text-foreground"
+        >
           Tilbake til oversikten
         </Link>
       </div>
@@ -52,7 +55,7 @@ export default async function page({ params }: { params: { slug: string } }) {
 
         <section className="space-y-4 sm:space-y-8">
           {musician.quote && (
-            <blockquote className="p-8 sm:p-0 text-2xl font-bold text-primary">
+            <blockquote className="p-8 sm:p-0 text-2xl font-bold text-primary dark:text-foreground">
               - {musician.quote}
             </blockquote>
           )}
@@ -81,7 +84,7 @@ export default async function page({ params }: { params: { slug: string } }) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline text-primary"
+                    className="hover:underline text-primary dark:text-foreground"
                   >
                     {link.platform}
                     <ExternalLink className="inline-block ml-1 w-4" />

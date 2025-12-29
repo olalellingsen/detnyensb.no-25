@@ -19,7 +19,7 @@ export default function ConcertCard({ concert }: { concert: Concert }) {
       )}
       <div className="p-4 space-y-4">
         <div>
-          <h3>{concert.title}</h3>
+          <h3 className="font-medium">{concert.title}</h3>
           <p>
             {formatDate(concert.date || "")} - {concert.time}
           </p>
@@ -33,14 +33,18 @@ export default function ConcertCard({ concert }: { concert: Concert }) {
         </div>
         <div className="flex justify-between">
           {concert.ticketsLink && (
-            <Link href={concert.ticketsLink} target="_blank" className="button">
+            <Link
+              href={concert.ticketsLink}
+              target="_blank"
+              className="button-secondary"
+            >
               Kjøp billett!
             </Link>
           )}
           {concert.slug && (
             <Link
               href={`/konserter/${concert.slug.current}`}
-              className="button-secondary"
+              className="button-tertiary"
             >
               Les mer
             </Link>
