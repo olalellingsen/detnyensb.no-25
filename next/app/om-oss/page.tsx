@@ -34,7 +34,7 @@ export default async function page() {
           alt="About Image"
           width={800}
           height={600}
-          className="w-full aspect-square sm:aspect-video object-cover"
+          className="w-full aspect-3/4 sm:aspect-video object-cover"
         />
       )}
 

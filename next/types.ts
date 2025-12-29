@@ -73,6 +73,8 @@ export type Concert = {
   date?: string;
   time?: string;
   location?: string;
+  locationLink?: string;
+  slug: { current: string };
   ticketsLink?: string;
   description?: string;
   image?: SanityImage;

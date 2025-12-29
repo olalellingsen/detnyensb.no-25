@@ -39,9 +39,9 @@ function Navbar() {
             <Image
               src="/logo.png"
               alt="Logo"
-              className="size-14 sm:size-16 cursor-pointer hover:scale-105 transition-transform duration-300"
-              width={64}
-              height={64}
+              width={40}
+              height={40}
+              className="size-13 sm:size-16 hover:scale-105 transition-transform"
             />
           </Link>
         </div>
@@ -72,14 +72,9 @@ function Navbar() {
             </div>
 
             {/* menu on mobile */}
-            <ul className="text-4xl grid gap-4 px-2">
+            <ul className="text-5xl grid gap-4 px-2 text-center">
               {menuItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.path}
-                  className="hover:font-medium"
-                  onClick={closeMenu}
-                >
+                <Link key={item.label} href={item.path} onClick={closeMenu}>
                   {item.label}
                 </Link>
               ))}

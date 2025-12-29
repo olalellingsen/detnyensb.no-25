@@ -32,7 +32,7 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <>
       <div className="mb-4">
-        <Link href="/musikere" className="hover:underline text-primary p-2">
+        <Link href="/musikere" className="hover:underline text-primary">
           Tilbake til oversikten
         </Link>
       </div>
@@ -50,9 +50,9 @@ export default async function page({ params }: { params: { slug: string } }) {
           />
         )}
 
-        <section>
+        <section className="space-y-4 sm:space-y-8">
           {musician.quote && (
-            <blockquote className="px-8 md:px-2 py-8 lg:py-16 text-2xl font-bold text-primary">
+            <blockquote className="p-8 sm:p-0 text-2xl font-bold text-primary">
               - {musician.quote}
             </blockquote>
           )}
@@ -74,7 +74,7 @@ export default async function page({ params }: { params: { slug: string } }) {
           )}
 
           {musician.socialLinks && (
-            <ul className="px-2 sm:px-0 py-4">
+            <ul>
               {musician.socialLinks.map((link, index) => (
                 <li key={index}>
                   <Link

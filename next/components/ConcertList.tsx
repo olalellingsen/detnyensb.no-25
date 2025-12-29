@@ -1,16 +1,6 @@
-import { urlForImage } from "@/sanity/client";
 import { Concert } from "@/types";
-import { ExternalLink } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-
-export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, "0");
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const year = date.getFullYear();
-  return `${day}.${month}.${year}`;
-}
+import { formatDate } from "@/utils/formatDate";
+import ConcertCard from "./ConcertCard";
 
 export default function ConcertList({
   upcoming_concerts,
@@ -22,61 +12,29 @@ export default function ConcertList({
   return (
     <>
       {upcoming_concerts.length > 0 && (
-        <section className="mt-10">
+        <section>
           <h2>Kommende konserter</h2>
-          <ul className="space-y-2">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {upcoming_concerts.map((concert, index) => (
-              <li
-                key={index}
-                className="flex justify-between max-w-md py-1 border-b border-gray-300"
-              >
-                {concert.image && (
-                  <Image
-                    src={urlForImage(concert.image).url()}
-                    alt={concert.image.alt || "Concert Image"}
-                    width={300}
-                    height={200}
-                    className="aspect-square object-cover w-full"
-                  />
-                )}
-
-                <div>
-                  <h3>{concert.title}</h3>
-                  <p>{concert.location}</p>
-                  <p>
-                    {formatDate(concert.date || "")} - {concert.time}
-                  </p>
-                </div>
-                {concert.ticketsLink && (
-                  <div className="flex items-end">
-                    <Link
-                      href={concert.ticketsLink}
-                      target="_blank"
-                      className="flex gap-1 hover:underline px-2"
-                    >
-                      Tickets
-                      <ExternalLink strokeWidth={1} />
-                    </Link>
-                  </div>
-                )}
+              <li key={index}>
+                <ConcertCard concert={concert} />
               </li>
             ))}
           </ul>
         </section>
       )}
       {past_concerts.length > 0 && (
-        <section className="mt-10">
+        <section className="py-12">
           <h2>Tidligere konserter</h2>
-
           <ul className="space-y-2">
             {past_concerts.map((concert, index) => (
               <li
                 key={index}
-                className="max-w-md py-1 border-b border-gray-300"
+                className="py-1 border-b border-gray-300 grid lg:grid-cols-5"
               >
-                <h3>{concert.title}</h3>
-                <p>{concert.location}</p>
                 <p>{formatDate(concert.date || "")}</p>
+                <p className="col-span-3">{concert.title}</p>
+                <p>{concert.location}</p>
               </li>
             ))}
           </ul>

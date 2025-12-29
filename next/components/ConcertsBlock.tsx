@@ -1,9 +1,6 @@
 import { Concert } from "@/types";
-import Link from "next/link";
 import React from "react";
-import Image from "next/image";
-import { urlForImage } from "@/sanity/client";
-import { formatDate } from "./ConcertList";
+import ConcertCard from "./ConcertCard";
 
 export default function ConcertsBlock({
   concertList,
@@ -19,33 +16,9 @@ export default function ConcertsBlock({
         {concertList.map((concert) => (
           <li
             key={concert._id}
-            className="bg-primary text-background min-w-9/10 sm:min-w-4/10 snap-start"
+            className="bg-primary text-background dark:text-foreground min-w-9/10 w-full sm:min-w-4/10 snap-start"
           >
-            {concert.image && (
-              <Image
-                src={urlForImage(concert.image).url()}
-                alt={concert.image.alt || "Concert Image"}
-                width={400}
-                height={300}
-                className="w-full aspect-square object-cover"
-              />
-            )}
-            <div className="p-4">
-              <h3>{concert.title}</h3>
-              <p>
-                {formatDate(concert.date || "")} - {concert.time}
-              </p>
-              <p>{concert.location}</p>
-              {concert.ticketsLink && (
-                <Link
-                  href={concert.ticketsLink}
-                  target="_blank"
-                  className="button block w-max"
-                >
-                  Kjøp billetter
-                </Link>
-              )}
-            </div>
+            <ConcertCard concert={concert} />
           </li>
         ))}
       </ul>

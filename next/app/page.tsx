@@ -34,6 +34,8 @@ const HOME_QUERY = defineQuery(`
           title,
           date,
           location,
+          locationLink,
+          slug,
           ticketsLink,
           description,
           image
@@ -64,7 +66,7 @@ export default async function Home() {
       <h1 className="text-center">Det Nye Norske Storband</h1>
 
       {home.homeImage && (
-        <section>
+        <section className="-mx-2 sm:-mx-0">
           <Image
             src={urlForImage(home.homeImage.image).url()}
             alt={home.homeImage.alt || "Home Image"}
@@ -84,13 +86,13 @@ export default async function Home() {
             return <PortableTextComponent key={index} content={block} />;
           case "gallery":
             return (
-              <section key={index} className="my-10">
+              <section key={index} className="my-10 -mx-2 sm:-mx-0">
                 <Gallery images={block.images} />
               </section>
             );
           case "spotifyPlayer":
             return (
-              <section key={index} className="my-10 px-2 sm:px-0">
+              <section key={index} className="my-10">
                 <SpotifyPlayer url={block.url} size={block.size} />
               </section>
             );

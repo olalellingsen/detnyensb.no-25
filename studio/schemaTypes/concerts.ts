@@ -19,6 +19,15 @@ export const concerts = defineType({
       },
     }),
     defineField({
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'time',
       type: 'string',
       title: 'Tid',

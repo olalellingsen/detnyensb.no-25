@@ -10,8 +10,11 @@ const UPCOMING_CONCERTS_QUERY =
   date,
   time,
   location,
+  locationLink,
+  slug,
   ticketsLink,
-  description
+  description,
+  image
 }`);
 
 const PAST_CONCERTS_QUERY =
@@ -22,39 +25,20 @@ const PAST_CONCERTS_QUERY =
   description
 }`);
 
-const options = { next: { revalidate: 600 } };
-
 export default async function page() {
   const upcoming_concerts = await client.fetch<Concert[]>(
-    UPCOMING_CONCERTS_QUERY,
-    {},
-    options
+    UPCOMING_CONCERTS_QUERY
   );
 
-  const past_concerts = await client.fetch<Concert[]>(
-    PAST_CONCERTS_QUERY,
-    {},
-    options
-  );
+  const past_concerts = await client.fetch<Concert[]>(PAST_CONCERTS_QUERY);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <article>
-        <h1>Konserter</h1>
-        <ConcertList
-          upcoming_concerts={upcoming_concerts}
-          past_concerts={past_concerts}
-        />
-      </article>
-      {/* <aside className="lg:pt-24">
-        <Image
-          src={concertPageImage}
-          alt="Concert Page"
-          width={500}
-          height={300}
-          className="aspect-[3/4] sm:aspect-video object-cover lg:aspect-[3/4] w-full"
-        />
-      </aside> */}
-    </div>
+    <article>
+      <h1>Konserter</h1>
+      <ConcertList
+        upcoming_concerts={upcoming_concerts}
+        past_concerts={past_concerts}
+      />
+    </article>
   );
 }
