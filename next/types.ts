@@ -38,7 +38,7 @@ export type SpotifyBlock = {
 // Video block type
 export type VideoBlock = {
   _type: "videos";
-  videos: Array<{
+  videosList: Array<{
     _type: string;
     url: string;
     caption: string;

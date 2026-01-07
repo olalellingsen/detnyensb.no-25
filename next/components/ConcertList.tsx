@@ -12,7 +12,7 @@ export default function ConcertList({
   return (
     <>
       {upcoming_concerts.length > 0 && (
-        <section>
+        <section className="mb-12">
           <h2>Kommende konserter</h2>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {upcoming_concerts.map((concert, index) => (
@@ -24,7 +24,7 @@ export default function ConcertList({
         </section>
       )}
       {past_concerts.length > 0 && (
-        <section className="py-12">
+        <section>
           <h2>Tidligere konserter</h2>
           <ul className="space-y-2">
             {past_concerts.map((concert, index) => (

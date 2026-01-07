@@ -10,32 +10,36 @@ function getEmbedUrl(url?: string) {
 }
 
 export default function VideoBlock({
-  videos,
+  videosList,
 }: {
-  videos: Array<{
+  videosList: Array<{
     _type: string;
     url: string;
     caption: string;
   }>;
 }) {
-  return (
-    <ul className="grid gap-8 md:gap-4 md:grid-cols-2">
-      {videos.map((video) => {
-        const embedUrl = getEmbedUrl(video.url);
-        return (
-          <li key={video.url}>
-            {video.caption && <h3 className="line-clamp-2">{video.caption}</h3>}
-            {embedUrl && (
-              <iframe
-                src={embedUrl}
-                title={video.caption}
-                className="w-full aspect-video"
-                allowFullScreen
-              />
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  );
+  if (videosList) {
+    return (
+      <ul className="grid gap-8 md:gap-4 md:grid-cols-2">
+        {videosList.map((video) => {
+          const embedUrl = getEmbedUrl(video.url);
+          return (
+            <li key={video.url}>
+              {video.caption && (
+                <h3 className="line-clamp-2">{video.caption}</h3>
+              )}
+              {embedUrl && (
+                <iframe
+                  src={embedUrl}
+                  title={video.caption}
+                  className="w-full aspect-video"
+                  allowFullScreen
+                />
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
 }

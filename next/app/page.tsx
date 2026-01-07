@@ -44,7 +44,7 @@ const HOME_QUERY = defineQuery(`
       _type == "videos" => {
         _type,
         title,
-        videos[] {
+        videosList[] {
           _type,
           url,
           caption
@@ -99,7 +99,7 @@ export default async function Home() {
           case "videos":
             return (
               <section key={index} className="my-10">
-                <VideoBlock videos={block.videos} />
+                <VideoBlock videosList={block.videosList} />
               </section>
             );
           case "concertsBlock":
