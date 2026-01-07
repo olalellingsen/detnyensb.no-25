@@ -53,13 +53,13 @@ figcaption {
 }
 
 .button {
-  @apply px-4 py-2 w-max shadow-2xl rounded-2xl bg-primary text-white hover:bg-primary/80 focus:ring-2 ring-primary dark:bg-foreground dark:text-primary dark:hover:bg-foreground/80 dark:ring-foreground transition-colors;
+  @apply px-4 py-2 w-max shadow-2xl rounded-full bg-primary text-white hover:bg-primary/80 focus:ring-2 ring-primary dark:bg-foreground dark:text-primary dark:hover:bg-foreground/80 dark:ring-foreground transition-colors;
 }
 
 .button-secondary {
-  @apply px-4 py-2 w-max shadow-2xl rounded-2xl bg-background text-primary hover:bg-background/80 focus:ring-2 ring-background dark:bg-foreground dark:hover:bg-foreground/80 dark:ring-foreground transition-colors;
+  @apply px-4 py-2 w-max shadow-2xl rounded-full bg-background text-primary hover:bg-background/80 focus:ring-2 ring-background dark:bg-foreground dark:hover:bg-foreground/80 dark:ring-foreground transition-colors;
 }
 
 .button-tertiary {
-  @apply px-4 py-2 w-max shadow-2xl rounded-2xl bg-primary border border-white hover:bg-background/20 focus:ring-1 ring-background dark:hover:bg-background/80 dark:ring-foreground transition-colors;
+  @apply px-4 py-2 w-max shadow-2xl rounded-full bg-primary border border-white hover:bg-background/20 focus:ring-1 ring-background dark:hover:bg-background/80 dark:ring-foreground transition-colors;
 }

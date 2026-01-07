@@ -16,7 +16,7 @@ export default async function Footer() {
   const footerData = await client.fetch<Footer>(FOOTER_QUERY);
 
   return (
-    <footer className="p-8 bg-background text-foreground">
+    <footer className="p-8 bg-primary dark:bg-primary/30 text-background dark:text-foreground">
       <div className="grid gap-6 *:text-center *:sm:text-left lg:flex lg:justify-between max-w-6xl mx-auto">
         {footerData.buttons && (
           <ul>
@@ -26,7 +26,7 @@ export default async function Footer() {
                   href={button.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="button"
+                  className="button-secondary"
                 >
                   {button.title}
                 </Link>
@@ -96,7 +96,7 @@ export default async function Footer() {
         )}
       </div>
 
-      <p className="text-center text-foreground/50 mt-10">
+      <p className="text-center text-background/50 dark:text-foreground/50 mt-10">
         © {new Date().getFullYear()} Det Nye Norske Storband
       </p>
     </footer>
