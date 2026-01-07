@@ -164,7 +164,8 @@ export const home = defineType({
               type: 'string',
             },
             {
-              name: 'videos',
+              name: 'videosList',
+              title: 'Legg til videoer',
               type: 'array',
               of: [
                 {
@@ -186,18 +187,21 @@ export const home = defineType({
                   ],
                 },
               ],
-              preview: {
-                select: {
-                  title: 'title',
-                },
-                prepare({title}) {
-                  return {
-                    title: 'Video' + (title ? `: ${title}` : ''),
-                  }
-                },
-              },
             },
           ],
+          preview: {
+            select: {
+              title: 'title',
+              videosList: 'videosList',
+            },
+            prepare({videosList}) {
+              const count = videosList ? videosList.length : 0
+              return {
+                title: 'Videoer',
+                subtitle: `${count} video${count !== 1 ? 'er' : ''} lagt til`,
+              }
+            },
+          },
         },
 
         // Concerts Block
@@ -286,23 +290,22 @@ export const home = defineType({
               title: 'title',
               images: 'images',
             },
-            prepare({title, images}) {
+            prepare({images}) {
               const imageCount = images?.length || 0
               return {
-                title: 'Image Gallery',
-                subtitle: `${title || 'Untitled'} (${imageCount} image${imageCount !== 1 ? 's' : ''})`,
+                title: 'Bildegalleri',
+                subtitle: `${imageCount} bilde${imageCount !== 1 ? 'r' : ''}`,
               }
             },
           },
         },
       ],
-      validation: (Rule) => Rule.min(1).error('Page must have at least one content block'),
     }),
   ],
   preview: {
     prepare() {
       return {
-        title: 'Home Page',
+        title: 'Hjem Side',
       }
     },
   },
