@@ -55,7 +55,7 @@ const HOME_QUERY = defineQuery(`
 `);
 
 export default async function Home() {
-  const home = await client.fetch<HomePage>(HOME_QUERY, {});
+  const home = await client.fetch<HomePage>(HOME_QUERY, { revalidate: 60 });
 
   if (!home) {
     return <div>Loading...</div>;
