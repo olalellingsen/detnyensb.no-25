@@ -40,7 +40,7 @@ export default async function page() {
         return (
           <section key={key} className="mb-8 sm:mb-16">
             <h2>{title}</h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 sm:gap-4">
               {sectionMusicians.map((musician) => (
                 <MusicianCard key={musician.name} musician={musician} />
               ))}

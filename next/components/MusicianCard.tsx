@@ -6,7 +6,7 @@ import { urlForImage } from "@/sanity/client";
 
 export default function MusicianCard({ musician }: { musician: Musician }) {
   return (
-    <Link href={`/musikere/${musician.slug.current}`} className="group">
+    <Link href={`/musikere/${musician.slug.current}`} className="group mb-2">
       <Image
         src={urlForImage(musician.photo).url()}
         alt={musician.name}
