@@ -1,23 +1,15 @@
 import { client } from "@/sanity/client";
-import { defineQuery } from "next-sanity";
 import React from "react";
 import { Musician } from "../../types";
 import MusicianCard from "@/components/MusicianCard";
-
-const MUSICIANS_QUERY = defineQuery(`*[_type == "musicians"]{
-  name,
-  info,
-  socialLinks,
-  instrument,
-  quote,
-  section,
-  order,
-  slug,
-  photo{asset->{_id,url}}
-}`);
+import { MUSICIANS_QUERY } from "../queries";
 
 export default async function page() {
-  const musicians = await client.fetch<Musician[]>(MUSICIANS_QUERY, {});
+  const musicians = await client.fetch<Musician[]>(
+    MUSICIANS_QUERY,
+    {},
+    { next: { revalidate: 60 } },
+  );
 
   const sections = [
     { key: "sax" as const, title: "Saxofon" },

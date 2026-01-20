@@ -1,22 +1,20 @@
 import { client, urlForImage } from "@/sanity/client";
 import { Musician } from "@/types";
 import { ExternalLink } from "lucide-react";
-import { defineQuery } from "next-sanity";
+import { MUSICIAN_QUERY } from "../../queries";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const MUSICIAN_QUERY =
-  defineQuery(`*[_type == "musicians" && slug.current == $slug][0]{
-  name,
-  info,
-  socialLinks,
-  instrument,
-  quote,
-  section,
-  slug,
-  photo{asset->{_id,url}}
-}`);
+export async function generateStaticParams() {
+  const musicians = await client.fetch<{ slug: { current: string } }[]>(
+    `*[_type == "musicians"]{ slug }`,
+  );
+
+  return musicians.map((musician) => ({
+    slug: musician.slug.current,
+  }));
+}
 
 export default async function page({
   params,
@@ -24,9 +22,13 @@ export default async function page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const musician = await client.fetch<Musician>(MUSICIAN_QUERY, {
-    slug,
-  });
+  const musician = await client.fetch<Musician>(
+    MUSICIAN_QUERY,
+    {
+      slug,
+    },
+    { next: { revalidate: 60 } },
+  );
   return (
     <>
       <div className="mb-4">

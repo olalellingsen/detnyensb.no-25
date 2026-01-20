@@ -1,33 +1,25 @@
 import { client, urlForImage } from "@/sanity/client";
 import { Release } from "@/types";
-import { defineQuery } from "next-sanity";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const ALBUMS_QUERY = defineQuery(`
-  *[_type == "albums"]{
-    id,
-    title,
-    releaseDate,
-    coverArt,
-    spotifyLink,
-  } | order(releaseDate desc)
-`);
-
-const SINGLES_QUERY = defineQuery(`
-  *[_type == "Singles"]{
-    id,
-    title,
-    releaseDate,
-    coverArt,
-    spotifyLink,
-  } | order(releaseDate desc)
-`);
+import { ALBUMS_QUERY, SINGLES_QUERY } from "../queries";
 
 export default async function page() {
-  const albums = await client.fetch<Release[]>(ALBUMS_QUERY, {});
-  const singles = await client.fetch<Release[]>(SINGLES_QUERY, {});
+  const albums = await client.fetch<Release[]>(
+    ALBUMS_QUERY,
+    {},
+    {
+      next: { revalidate: 60 },
+    },
+  );
+  const singles = await client.fetch<Release[]>(
+    SINGLES_QUERY,
+    {},
+    {
+      next: { revalidate: 60 },
+    },
+  );
 
   return (
     <div className="space-y-12">

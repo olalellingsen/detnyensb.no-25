@@ -1,25 +1,21 @@
 import { client, urlForImage } from "@/sanity/client";
 import { Concert } from "@/types";
 import { formatDate } from "@/utils/formatDate";
-import { defineQuery } from "next-sanity";
+import { CONCERT_QUERY } from "../../queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
-const CONCERT_QUERY =
-  defineQuery(`*[_type == "concerts" && slug.current == $slug][0]{
-  _id,
-  title,
-  date,
-  time,
-  location,
-  locationLink,
-  slug,
-  ticketsLink,
-  description,
-  image
-}`);
+export async function generateStaticParams() {
+  const concerts = await client.fetch(
+    `*[_type == "concerts" && defined(slug.current)]{ slug }`,
+  );
+
+  return concerts.map((concert: { slug: { current: string } }) => ({
+    slug: concert.slug.current,
+  }));
+}
 
 export default async function page({
   params,
@@ -27,9 +23,11 @@ export default async function page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const concert = await client.fetch<Concert | null>(CONCERT_QUERY, {
-    slug,
-  });
+  const concert = await client.fetch<Concert | null>(
+    CONCERT_QUERY,
+    { slug },
+    { next: { revalidate: 60 } },
+  );
 
   if (!concert) notFound();
 

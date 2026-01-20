@@ -5,54 +5,8 @@ import SpotifyPlayer from "@/components/SpotifyPlayer";
 import VideoBlock from "@/components/VideoBlock";
 import { client, urlForImage } from "@/sanity/client";
 import { HomePage } from "@/types";
-import { defineQuery } from "next-sanity";
+import { HOME_QUERY } from "./queries";
 import Image from "next/image";
-
-const HOME_QUERY = defineQuery(`
-  *[_type == "home"][0]{
-    title,
-    homeImage,
-    pageBuilder[]{
-      _type == "richText" => {
-        _type,
-        content
-      },
-      _type == "gallery" => {
-        _type,
-        images
-      },
-      _type == "spotifyPlayer" => {
-        _type,
-        url,
-        size
-      },
-      _type == "concertsBlock" => {
-        _type,
-        title,
-        concertList[]-> {
-          _id,
-          title,
-          date,
-          location,
-          locationLink,
-          slug,
-          ticketsLink,
-          description,
-          image
-        }
-      },
-      _type == "videos" => {
-        _type,
-        title,
-        videosList[] {
-          _type,
-          url,
-          caption
-        }
-      }
-    }
-  }
-`);
 
 export default async function Home() {
   const home = await client.fetch<HomePage>(HOME_QUERY, { revalidate: 60 });
