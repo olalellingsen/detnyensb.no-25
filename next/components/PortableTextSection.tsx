@@ -71,7 +71,7 @@ export default function PortableTextSection({
   content: RichTextBlock;
 }) {
   return (
-    <article className="prose text-foreground max-w-3xl mx-auto mt-8">
+    <article className="prose text-foreground max-w-3xl mx-auto mt-8 text-lg">
       <PortableText value={content.content} components={stylings} />
     </article>
   );

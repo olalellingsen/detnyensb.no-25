@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Radley } from "next/font/google";
+import { Hind } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const radley = Radley({
+const hind = Hind({
+  weight: "300",
   subsets: ["latin"],
-  variable: "--font-radley",
-  weight: "400",
-});
-
-const radleyMono = Radley({
-  subsets: ["latin"],
-  variable: "--font-radley-mono",
-  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${radley.variable} ${radleyMono.variable} antialiased flex flex-col min-h-screen font-light`}
+        className={`${hind.className} antialiased flex flex-col min-h-screen font-light text-lg`}
       >
         <Navbar />
         <main className="flex-grow w-full max-w-6xl mx-auto pt-4 pb-8 px-1">
