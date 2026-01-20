@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ALBUMS_QUERY, SINGLES_QUERY } from "../queries";
+import { formatDate } from "@/utils/formatDate";
 
 export default async function page() {
   const albums = await client.fetch<Release[]>(
@@ -34,7 +35,6 @@ export default async function page() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <h3 className="line-clamp-1">{album.title}</h3>
                 <Image
                   src={urlForImage(album.coverArt).url()}
                   alt={album.title}
@@ -42,7 +42,12 @@ export default async function page() {
                   height={500}
                   className="w-full group-hover:scale-101 transition-transform duration-200"
                 />
-                <p>Utgitt {new Date(album.releaseDate).toLocaleDateString()}</p>
+                <h3 className="line-clamp-1 group-hover:underline translate-y-1">
+                  {album.title}
+                </h3>
+                <p className="text-foreground/50">
+                  Utgitt {formatDate(album.releaseDate)}
+                </p>
               </Link>
             </li>
           ))}
@@ -58,7 +63,6 @@ export default async function page() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <h3 className="line-clamp-1">{single.title}</h3>
                 <Image
                   src={urlForImage(single.coverArt).url()}
                   alt={single.title}
@@ -66,8 +70,11 @@ export default async function page() {
                   height={500}
                   className="w-full group-hover:scale-101 transition-transform duration-200"
                 />
-                <p>
-                  Utgitt {new Date(single.releaseDate).toLocaleDateString()}
+                <h3 className="line-clamp-1 group-hover:underline translate-y-1">
+                  {single.title}
+                </h3>
+                <p className="text-foreground/50">
+                  Utgitt {formatDate(single.releaseDate)}
                 </p>
               </Link>
             </li>

@@ -14,8 +14,8 @@ export default function MusicianCard({ musician }: { musician: Musician }) {
         height={200}
         className="w-full h-auto object-cover group-hover:scale-101 transition-transform duration-200"
       />
-      <p className="group-hover:underline text-xl">{musician.name}</p>
-      <p>{musician.instrument}</p>
+      <h3 className="group-hover:underline translate-y-1">{musician.name}</h3>
+      <p className="text-foreground/60">{musician.instrument}</p>
     </Link>
   );
 }
