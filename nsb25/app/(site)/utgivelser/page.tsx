@@ -3,7 +3,7 @@ import { Release } from "@/types";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ALBUMS_QUERY, SINGLES_QUERY } from "../queries";
+import { ALBUMS_QUERY, SINGLES_QUERY } from "../../queries";
 import { formatDate } from "@/utils/formatDate";
 
 export default async function page() {

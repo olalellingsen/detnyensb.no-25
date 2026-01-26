@@ -1,8 +1,8 @@
 import React from "react";
 import { client, urlForImage } from "@/sanity/client";
-import { ABOUT_QUERY } from "../queries";
+import { ABOUT_QUERY } from "@/app/queries";
 import Image from "next/image";
-import PortableTextComponent from "@/components/PortableTextSection";
+import PortableTextComponent from "../components/PortableTextSection";
 import { AboutPage } from "@/types";
 
 export default async function page() {

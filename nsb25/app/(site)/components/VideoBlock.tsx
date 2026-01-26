@@ -1,7 +1,7 @@
 function getEmbedUrl(url?: string) {
   if (!url) return "";
   const youtubeMatch = url.match(
-    /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\&\?\/]+)/
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\&\?\/]+)/,
   );
   if (youtubeMatch && youtubeMatch[1]) {
     return `https://www.youtube.com/embed/${youtubeMatch[1]}`;

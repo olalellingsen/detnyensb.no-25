@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Hind } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import "../globals.css";
+import Navbar from "../(site)/components/Navbar";
+import Footer from "../(site)/components/Footer";
 
 const hind = Hind({
   weight: "300",

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import { Musician } from "./../types";
+import { Musician } from "@/types";
 import { urlForImage } from "@/sanity/client";
 
 export default function MusicianCard({ musician }: { musician: Musician }) {

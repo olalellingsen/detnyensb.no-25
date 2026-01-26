@@ -1,7 +1,7 @@
 import { client, urlForImage } from "@/sanity/client";
 import { Concert } from "@/types";
 import { formatDate } from "@/utils/formatDate";
-import { CONCERT_QUERY } from "../../queries";
+import { CONCERT_QUERY } from "@/app/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
