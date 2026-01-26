@@ -1,16 +1,12 @@
 import React from "react";
 import { client, urlForImage } from "@/sanity/client";
-import { ABOUT_QUERY } from "../queries";
+import { ABOUT_QUERY } from "@/app/queries";
 import Image from "next/image";
-import PortableTextComponent from "@/components/PortableTextSection";
+import PortableTextComponent from "../components/PortableTextSection";
 import { AboutPage } from "@/types";
 
 export default async function page() {
-  const about = await client.fetch<AboutPage>(
-    ABOUT_QUERY,
-    {},
-    { next: { revalidate: 60 } },
-  );
+  const about = await client.fetch<AboutPage>(ABOUT_QUERY);
 
   if (!about) {
     return <div>Loading...</div>;

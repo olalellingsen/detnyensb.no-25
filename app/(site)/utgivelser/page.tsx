@@ -3,24 +3,12 @@ import { Release } from "@/types";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ALBUMS_QUERY, SINGLES_QUERY } from "../queries";
+import { ALBUMS_QUERY, SINGLES_QUERY } from "../../queries";
 import { formatDate } from "@/utils/formatDate";
 
 export default async function page() {
-  const albums = await client.fetch<Release[]>(
-    ALBUMS_QUERY,
-    {},
-    {
-      next: { revalidate: 60 },
-    },
-  );
-  const singles = await client.fetch<Release[]>(
-    SINGLES_QUERY,
-    {},
-    {
-      next: { revalidate: 60 },
-    },
-  );
+  const albums = await client.fetch<Release[]>(ALBUMS_QUERY);
+  const singles = await client.fetch<Release[]>(SINGLES_QUERY);
 
   return (
     <div className="space-y-12">

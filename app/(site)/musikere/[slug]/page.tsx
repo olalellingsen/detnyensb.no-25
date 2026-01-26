@@ -1,7 +1,7 @@
 import { client, urlForImage } from "@/sanity/client";
 import { Musician } from "@/types";
 import { ExternalLink } from "lucide-react";
-import { MUSICIAN_QUERY } from "../../queries";
+import { MUSICIAN_QUERY } from "@/app/queries";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

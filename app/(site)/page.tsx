@@ -1,15 +1,15 @@
-import ConcertsBlock from "@/components/ConcertsBlock";
-import Gallery from "@/components/Gallery";
-import PortableTextComponent from "@/components/PortableTextSection";
-import SpotifyPlayer from "@/components/SpotifyPlayer";
-import VideoBlock from "@/components/VideoBlock";
+import ConcertsBlock from "./components/ConcertsBlock";
+import Gallery from "./components/Gallery";
+import PortableTextComponent from "./components/PortableTextSection";
+import SpotifyPlayer from "./components/SpotifyPlayer";
+import VideoBlock from "./components/VideoBlock";
 import { client, urlForImage } from "@/sanity/client";
 import { HomePage } from "@/types";
-import { HOME_QUERY } from "./queries";
+import { HOME_QUERY } from "../queries";
 import Image from "next/image";
 
 export default async function Home() {
-  const home = await client.fetch<HomePage>(HOME_QUERY, { revalidate: 60 });
+  const home = await client.fetch<HomePage>(HOME_QUERY);
 
   if (!home) {
     return <div>Loading...</div>;
