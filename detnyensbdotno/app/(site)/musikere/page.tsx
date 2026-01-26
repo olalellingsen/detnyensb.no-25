@@ -5,11 +5,7 @@ import MusicianCard from "../components/MusicianCard";
 import { MUSICIANS_QUERY } from "@/app/queries";
 
 export default async function page() {
-  const musicians = await client.fetch<Musician[]>(
-    MUSICIANS_QUERY,
-    {},
-    { next: { revalidate: 60 } },
-  );
+  const musicians = await client.fetch<Musician[]>(MUSICIANS_QUERY);
 
   const sections = [
     { key: "sax" as const, title: "Saxofon" },

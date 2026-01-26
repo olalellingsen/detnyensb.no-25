@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   title: "Det Nye Norske Storband",
 };
 
+export const revalidate = 60;
+
 export default function RootLayout({
   children,
 }: Readonly<{

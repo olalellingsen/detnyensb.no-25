@@ -9,7 +9,7 @@ import { HOME_QUERY } from "../queries";
 import Image from "next/image";
 
 export default async function Home() {
-  const home = await client.fetch<HomePage>(HOME_QUERY, { revalidate: 60 });
+  const home = await client.fetch<HomePage>(HOME_QUERY);
 
   if (!home) {
     return <div>Loading...</div>;
