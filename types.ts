@@ -76,7 +76,7 @@ export type Concert = {
   locationLink?: string;
   slug: { current: string };
   ticketsLink?: string;
-  description?: string;
+  description?: PortableTextBlock[];
   image?: SanityImage;
 };
 

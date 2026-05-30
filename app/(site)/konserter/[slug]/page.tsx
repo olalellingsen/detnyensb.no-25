@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+import PortableTextSection from "../../components/PortableTextSection";
 
 export async function generateStaticParams() {
   const concerts = await client.fetch(
@@ -33,14 +34,25 @@ export default async function page({
 
   return (
     <article className="space-y-8">
-      <div>
-        <Link
-          href="/konserter"
-          className="hover:underline text-primary dark:text-foreground"
-        >
-          Tilbake til oversikten
-        </Link>
-      </div>
+      <Link
+        href="/konserter"
+        className="hover:underline text-primary dark:text-foreground"
+      >
+        Tilbake til oversikten
+      </Link>
+
+      <section className="-mx-2 sm:-mx-0">
+        {concert.image && (
+          <Image
+            src={urlForImage(concert.image).url()}
+            alt={concert.image.alt || concert.title}
+            width={1200}
+            height={800}
+            className="w-full aspect-square sm:aspect-video object-cover"
+            priority
+          />
+        )}
+      </section>
 
       <section className="grid gap-4 *:text-center">
         <h1>{concert.title}</h1>
@@ -49,7 +61,7 @@ export default async function page({
           <div>
             <h2>
               {concert.date ? formatDate(concert.date) : ""}
-              {concert.date && concert.time ? " – " : ""}
+              {concert.date && concert.time ? " - " : ""}
               {concert.time || ""}
             </h2>
 
@@ -82,20 +94,9 @@ export default async function page({
         )}
       </section>
 
-      <section className="-mx-2 sm:-mx-0">
-        {concert.image && (
-          <Image
-            src={urlForImage(concert.image).url()}
-            alt={concert.image.alt || concert.title}
-            width={1200}
-            height={800}
-            className="w-full aspect-square sm:aspect-video object-cover"
-            priority
-          />
-        )}
-      </section>
-
-      {concert.description && <p>{concert.description}</p>}
+      {concert.description && (
+        <PortableTextSection value={concert.description} />
+      )}
     </article>
   );
 }

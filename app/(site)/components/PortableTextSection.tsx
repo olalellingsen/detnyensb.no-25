@@ -2,6 +2,7 @@ import Image from "next/image";
 import { urlForImage } from "@/sanity/client";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { RichTextBlock } from "@/types";
+import { PortableTextBlock } from "next-sanity";
 
 // Type for image values in portable text
 type ImageValue = {
@@ -67,12 +68,25 @@ const stylings: PortableTextComponents = {
 
 export default function PortableTextSection({
   content,
+  value,
 }: {
-  content: RichTextBlock;
+  content?: RichTextBlock;
+  // `value` kept for places that pass raw portable text or plain strings
+  value?: PortableTextBlock[] | string;
 }) {
+  const blocks = content?.content ?? value;
+
+  if (!blocks) return null;
+
+  const isString = typeof blocks === "string";
+
   return (
     <article className="prose text-foreground max-w-3xl mx-auto mt-8 text-lg">
-      <PortableText value={content.content} components={stylings} />
+      {isString ? (
+        <p>{blocks}</p>
+      ) : (
+        <PortableText value={blocks} components={stylings} />
+      )}
     </article>
   );
 }

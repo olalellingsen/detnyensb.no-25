@@ -7,17 +7,22 @@ import { formatDate } from "@/utils/formatDate";
 
 export default function ConcertCard({ concert }: { concert: Concert }) {
   return (
-    <div className="bg-primary text-background dark:text-foreground flex flex-col gap-2 w-full">
-      {concert.image && (
-        <Image
-          src={urlForImage(concert.image).url()}
-          alt={concert.image.alt || "Concert Image"}
-          width={300}
-          height={200}
-          className="aspect-square object-cover w-full"
-        />
-      )}
-      <div className="p-4 space-y-4">
+    <>
+      <Link
+        href={concert.slug ? `/konserter/${concert.slug.current}` : "#"}
+        className=" group flex flex-col gap-2 w-full overflow-hidden"
+      >
+        {concert.image && (
+          <Image
+            src={urlForImage(concert.image).url()}
+            alt={concert.image.alt || "Concert Image"}
+            width={300}
+            height={200}
+            className="aspect-square object-cover w-full group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
+      </Link>
+      <div className="p-4 space-y-4 bg-primary text-background dark:text-foreground">
         <div>
           <h3 className="font-medium">{concert.title}</h3>
           <p>
@@ -44,13 +49,13 @@ export default function ConcertCard({ concert }: { concert: Concert }) {
           {concert.slug && (
             <Link
               href={`/konserter/${concert.slug.current}`}
-              className="button-tertiary"
+              className="underline hover:no-underline p-2"
             >
               Les mer
             </Link>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
