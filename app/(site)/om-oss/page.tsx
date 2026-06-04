@@ -1,7 +1,7 @@
 import React from "react";
-import { client, urlForImage } from "@/sanity/client";
+import { client } from "@/sanity/client";
 import { ABOUT_QUERY } from "@/app/queries";
-import Image from "next/image";
+import SanityImage from "../components/SanityImage";
 import PortableTextComponent from "../components/PortableTextSection";
 import { AboutPage } from "@/types";
 
@@ -23,8 +23,8 @@ export default async function page() {
       <h1>{about.title}</h1>
 
       {about.image && (
-        <Image
-          src={urlForImage(about.image).url()}
+        <SanityImage
+          image={about.image}
           alt="About Image"
           width={800}
           height={600}

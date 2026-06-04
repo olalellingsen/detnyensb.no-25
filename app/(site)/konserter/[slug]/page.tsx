@@ -1,8 +1,8 @@
-import { client, urlForImage } from "@/sanity/client";
+import { client } from "@/sanity/client";
 import { Concert } from "@/types";
 import { formatDate } from "@/utils/formatDate";
 import { CONCERT_QUERY } from "@/app/queries";
-import Image from "next/image";
+import SanityImage from "../../components/SanityImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -43,8 +43,8 @@ export default async function page({
 
       <section className="-mx-2 sm:-mx-0">
         {concert.image && (
-          <Image
-            src={urlForImage(concert.image).url()}
+          <SanityImage
+            image={concert.image}
             alt={concert.image.alt || concert.title}
             width={1200}
             height={800}

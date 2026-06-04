@@ -11,6 +11,7 @@ export default defineConfig({
   basePath: "/studio", // `basePath` must match the route of your Studio
   projectId,
   dataset,
+  title: "Det Nye Norske Storband",
   plugins: [structureTool()],
   schema: { types: schemaTypes },
 });

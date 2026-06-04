@@ -1,30 +1,28 @@
 import React from "react";
-import { urlForImage } from "@/sanity/client";
 import { Concert } from "@/types";
 import Link from "next/link";
-import Image from "next/image";
+import SanityImage from "./SanityImage";
 import { formatDate } from "@/utils/formatDate";
 
 export default function ConcertCard({ concert }: { concert: Concert }) {
   return (
-    <>
+    <div className="flex flex-col h-full shadow-xl">
       <Link
         href={concert.slug ? `/konserter/${concert.slug.current}` : "#"}
-        className=" group flex flex-col gap-2 w-full overflow-hidden"
+        className="group overflow-hidden"
       >
         {concert.image && (
-          <Image
-            src={urlForImage(concert.image).url()}
-            alt={concert.image.alt || "Concert Image"}
-            width={300}
-            height={200}
+          <SanityImage
+            image={concert.image}
+            width={600}
+            height={600}
             className="aspect-square object-cover w-full group-hover:scale-105 transition-transform duration-500"
           />
         )}
       </Link>
-      <div className="p-4 space-y-4 bg-primary text-background dark:text-foreground">
-        <div>
-          <h3 className="font-medium">{concert.title}</h3>
+      <div className="p-6 bg-primary text-background dark:text-foreground flex flex-col flex-1 gap-4">
+        <div className="flex-1 flex flex-col">
+          <h3 className="font-medium flex-1">{concert.title}</h3>
           <p>
             {formatDate(concert.date || "")} - {concert.time}
           </p>
@@ -56,6 +54,6 @@ export default function ConcertCard({ concert }: { concert: Concert }) {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

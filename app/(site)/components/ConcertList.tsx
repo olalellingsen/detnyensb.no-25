@@ -16,7 +16,7 @@ export default function ConcertList({
           <h2>Kommende konserter</h2>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {upcoming_concerts.map((concert, index) => (
-              <li key={index}>
+              <li key={index} className="flex flex-col">
                 <ConcertCard concert={concert} />
               </li>
             ))}

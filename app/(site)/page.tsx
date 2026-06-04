@@ -3,10 +3,10 @@ import Gallery from "./components/Gallery";
 import PortableTextComponent from "./components/PortableTextSection";
 import SpotifyPlayer from "./components/SpotifyPlayer";
 import VideoBlock from "./components/VideoBlock";
-import { client, urlForImage } from "@/sanity/client";
+import { client } from "@/sanity/client";
 import { HomePage } from "@/types";
 import { HOME_QUERY } from "../queries";
-import Image from "next/image";
+import SanityImage from "./components/SanityImage";
 
 export default async function Home() {
   const home = await client.fetch<HomePage>(HOME_QUERY);
@@ -21,8 +21,8 @@ export default async function Home() {
 
       {home.homeImage && (
         <section className="-mx-2 sm:-mx-0">
-          <Image
-            src={urlForImage(home.homeImage.image).url()}
+          <SanityImage
+            image={home.homeImage.image}
             alt={home.homeImage.alt || "Home Image"}
             width={800}
             height={600}

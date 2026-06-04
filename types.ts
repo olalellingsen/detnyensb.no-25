@@ -8,6 +8,15 @@ export type SanityImage = {
   caption?: string;
 };
 
+// Represents a Sanity image field with hotspot/crop data
+export type SanityImageField = {
+  asset: { _ref: string; _type: "reference" };
+  hotspot?: { x: number; y: number; width?: number; height?: number };
+  crop?: { top?: number; bottom?: number; left?: number; right?: number };
+  alt?: string;
+  caption?: string;
+};
+
 // Rich text block type
 export type RichTextBlock = {
   _type: "richText";
@@ -77,7 +86,7 @@ export type Concert = {
   slug: { current: string };
   ticketsLink?: string;
   description?: PortableTextBlock[];
-  image?: SanityImage;
+  image?: SanityImageField;
 };
 
 export type Musician = {

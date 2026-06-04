@@ -1,8 +1,8 @@
-import { client, urlForImage } from "@/sanity/client";
+import { client } from "@/sanity/client";
 import { Musician } from "@/types";
 import { ExternalLink } from "lucide-react";
 import { MUSICIAN_QUERY } from "@/app/queries";
-import Image from "next/image";
+import SanityImage from "../../components/SanityImage";
 import Link from "next/link";
 import React from "react";
 
@@ -44,8 +44,8 @@ export default async function page({
 
       <article className="grid md:grid-cols-2 gap-4">
         {musician.photo && (
-          <Image
-            src={urlForImage(musician.photo).url()}
+          <SanityImage
+            image={musician.photo}
             alt={musician.name}
             className="w-full md:w-md aspect-3/4 object-cover"
             width={400}

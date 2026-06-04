@@ -1,7 +1,7 @@
-import { client, urlForImage } from "@/sanity/client";
+import { client } from "@/sanity/client";
 import { Release } from "@/types";
 import React from "react";
-import Image from "next/image";
+import SanityImage from "../components/SanityImage";
 import Link from "next/link";
 import { ALBUMS_QUERY, SINGLES_QUERY } from "../../queries";
 import { formatDate } from "@/utils/formatDate";
@@ -23,8 +23,8 @@ export default async function page() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src={urlForImage(album.coverArt).url()}
+                <SanityImage
+                  image={album.coverArt}
                   alt={album.title}
                   width={500}
                   height={500}
@@ -51,8 +51,8 @@ export default async function page() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src={urlForImage(single.coverArt).url()}
+                <SanityImage
+                  image={single.coverArt}
                   alt={single.title}
                   width={500}
                   height={500}

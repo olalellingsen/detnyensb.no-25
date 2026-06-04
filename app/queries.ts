@@ -61,7 +61,7 @@ export const MUSICIANS_QUERY = defineQuery(`*[_type == "musicians"]{
   section,
   order,
   slug,
-  photo{asset->{_id,url}}
+  photo{asset->{_id,url}, hotspot}
 }`);
 
 export const MUSICIAN_QUERY =
@@ -73,7 +73,7 @@ export const MUSICIAN_QUERY =
   quote,
   section,
   slug,
-  photo{asset->{_id,url}}
+  photo{asset->{_id,url}, hotspot}
 }`);
 
 export const ALBUMS_QUERY = defineQuery(`

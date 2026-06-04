@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { urlForImage } from "@/sanity/client";
+import SanityImage from "./SanityImage";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { RichTextBlock } from "@/types";
 import { PortableTextBlock } from "next-sanity";
@@ -24,8 +23,8 @@ const stylings: PortableTextComponents = {
   types: {
     image: ({ value }: { value: ImageValue }) => (
       <figure className="my-6">
-        <Image
-          src={urlForImage(value).url()}
+        <SanityImage
+          image={value}
           alt={value.alt || ""}
           width={800}
           height={600}
