@@ -25,6 +25,7 @@ export const HOME_QUERY = defineQuery(`
           _id,
           title,
           date,
+          time,
           location,
           locationLink,
           slug,

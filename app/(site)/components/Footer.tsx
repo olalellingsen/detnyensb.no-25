@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Button from "./Button";
 import { defineQuery } from "next-sanity";
 import { client } from "@/sanity/client";
 import type { Footer } from "@/types";
@@ -22,14 +23,14 @@ export default async function Footer() {
           <ul>
             {footerData.buttons.map((button, index) => (
               <li key={index}>
-                <Link
+                <Button
                   href={button.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="button-secondary"
+                  variant="secondary"
                 >
                   {button.title}
-                </Link>
+                </Button>
               </li>
             ))}
           </ul>

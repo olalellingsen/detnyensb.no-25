@@ -2,9 +2,11 @@ import React from "react";
 import { Concert } from "@/types";
 import Link from "next/link";
 import SanityImage from "./SanityImage";
+import Button from "./Button";
 import { formatDate } from "@/utils/formatDate";
 
 export default function ConcertCard({ concert }: { concert: Concert }) {
+  console.log(concert.time);
   return (
     <div className="flex flex-col h-full shadow-xl">
       <Link
@@ -36,13 +38,13 @@ export default function ConcertCard({ concert }: { concert: Concert }) {
         </div>
         <div className="flex justify-between">
           {concert.ticketsLink && (
-            <Link
+            <Button
               href={concert.ticketsLink}
               target="_blank"
-              className="button-secondary"
+              variant="secondary"
             >
               Kjøp billett!
-            </Link>
+            </Button>
           )}
           {concert.slug && (
             <Link

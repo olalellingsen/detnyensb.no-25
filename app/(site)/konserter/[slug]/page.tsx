@@ -3,6 +3,7 @@ import { Concert } from "@/types";
 import { formatDate } from "@/utils/formatDate";
 import { CONCERT_QUERY } from "@/app/queries";
 import SanityImage from "../../components/SanityImage";
+import Button from "../../components/Button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -83,14 +84,14 @@ export default async function page({
         )}
 
         {concert.ticketsLink && (
-          <Link
+          <Button
             href={concert.ticketsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="button mx-auto text-xl"
+            className="mx-auto text-xl"
           >
             Kjøp billett!
-          </Link>
+          </Button>
         )}
       </section>
 
