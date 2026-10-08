@@ -85,9 +85,6 @@ export const musicians = defineType({
           name: 'text',
           type: 'string',
           title: 'Bildetekst',
-          options: {
-            isHighlighted: true,
-          },
         },
       ],
       validation: (Rule) => Rule.required(),

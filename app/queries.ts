@@ -21,7 +21,7 @@ export const HOME_QUERY = defineQuery(`
       _type == "concertsBlock" => {
         _type,
         title,
-        concertList[]-> {
+        concertList[@->date >= string::split(now(), "T")[0]]-> {
           _id,
           title,
           date,

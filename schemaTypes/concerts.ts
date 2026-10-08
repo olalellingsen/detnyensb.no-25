@@ -44,9 +44,6 @@ export const concerts = defineType({
           name: "alt",
           type: "string",
           title: "Alt tekst",
-          options: {
-            isHighlighted: true,
-          },
         },
       ],
     }),
@@ -79,7 +76,6 @@ export const concerts = defineType({
               name: "alt",
               type: "string",
               title: "Alt tekst",
-              options: { isHighlighted: true },
             },
             {
               name: "caption",

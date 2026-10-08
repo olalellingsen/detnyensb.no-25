@@ -26,6 +26,9 @@ export default async function Home() {
             alt={home.homeImage.alt || "Home Image"}
             width={800}
             height={600}
+            sizes="(min-width: 1152px) 1136px, 100vw"
+            quality={90}
+            priority
             className="w-full aspect-3/4 sm:aspect-video object-cover"
           />
           {home.homeImage.caption && (
