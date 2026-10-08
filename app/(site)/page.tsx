@@ -24,8 +24,6 @@ export default async function Home() {
           <SanityImage
             image={home.homeImage.image}
             alt={home.homeImage.alt || "Home Image"}
-            width={800}
-            height={600}
             sizes="(min-width: 1152px) 1136px, 100vw"
             quality={90}
             priority

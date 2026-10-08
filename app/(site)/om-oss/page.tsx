@@ -26,8 +26,7 @@ export default async function page() {
         <SanityImage
           image={about.image}
           alt="About Image"
-          width={800}
-          height={600}
+          sizes="(min-width: 1152px) 1136px, 100vw"
           className="w-full aspect-video object-cover"
         />
       )}

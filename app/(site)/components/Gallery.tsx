@@ -10,8 +10,8 @@ export default function Gallery({ images }: { images: SanityImage[] }) {
           <SanityImageBlock
             image={imageObj.image}
             alt={imageObj.alt || "Gallery Image " + (imgIndex + 1)}
-            width={500}
-            height={800}
+            sizes="(min-width: 1152px) 368px, (min-width: 1024px) 33vw, (min-width: 640px) 40vw, 90vw"
+            quality={90}
             className="aspect-[5/8] object-cover w-full"
           />
         </li>
